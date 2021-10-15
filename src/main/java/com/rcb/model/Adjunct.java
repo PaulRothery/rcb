@@ -1,5 +1,6 @@
 package com.rcb.model;
 
+import com.rcb.validvalues.AdjunctType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,8 +9,8 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "adjunct_fermentable")
-public class AdjunctFermentable {
+@Table(name = "adjunct")
+public class Adjunct {
 
 
     @Id
@@ -25,6 +26,9 @@ public class AdjunctFermentable {
 
     @Column(name = "supplier", columnDefinition = "CHAR(50)")
     private String supplier;
+
+    @Column(name = "type", columnDefinition = "CHAR(15)")
+    private AdjunctType type;
 
     @Column(name = "category", columnDefinition = "CHAR(50)")
     private String category;

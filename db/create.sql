@@ -51,13 +51,14 @@ CREATE TABLE rcb.grain
     shipping_price    MONEY
 );
 
-DROP TABLE rcb.adjunct_fermentable;
-CREATE TABLE rcb.adjunct_fermentable
+DROP TABLE rcb.adjunct;
+CREATE TABLE rcb.adjunct
 (
     id                serial PRIMARY KEY,
     name              VARCHAR(50) NOT NULL,
     date              DATE DEFAULT CURRENT_DATE,
     supplier          VARCHAR(50) NOT NULL,
+    type              CHAR(15),
     category          VARCHAR(50),
     extract           INTEGER,
     ppg               NUMERIC(5,2),
