@@ -4,14 +4,17 @@ CREATE SCHEMA rcb;
 DROP TABLE rcb.hop;
 CREATE TABLE rcb.hop
 (
-    id         serial PRIMARY KEY,
-    name       CHAR(50) NOT NULL,
-    date       DATE DEFAULT CURRENT_DATE,
-    supplier   CHAR(50) NOT NULL,
-    lot_number CHAR(50),
-    crop_year  NUMERIC (4),
-    price      MONEY,
-    alpha      NUMERIC(5, 2)
+    id               serial PRIMARY KEY,
+    name             CHAR(50) NOT NULL,
+    date             DATE DEFAULT CURRENT_DATE,
+    supplier         CHAR(50) NOT NULL,
+    lot_number       CHAR(50),
+    crop_year        NUMERIC (4),
+    price            MONEY,
+    alpha            NUMERIC(5,2),
+    initial_quantity numeric(6,2),
+    current_quantity numeric(6,2)
+
 
 );
 
@@ -28,7 +31,9 @@ CREATE TABLE rcb.yeast
     previous_batch_brand CHAR(20),
     generation           NUMERIC(4),
     cell_count           NUMERIC(5,2),
-    viability            NUMERIC(5,2)
+    viability            NUMERIC(5,2),
+    initial_quantity     numeric(6,2),
+    current_quantity     numeric(6,2)
 
 );
 
@@ -48,7 +53,11 @@ CREATE TABLE rcb.grain
     diastatic_power   NUMERIC(5,2),
     base_price        MONEY,
     milling_price     MONEY,
-    shipping_price    MONEY
+    shipping_price    MONEY,
+    initial_quantity  numeric(6,2),
+    current_quantity  numeric(6,2)
+
+
 );
 
 DROP TABLE rcb.adjunct;
@@ -63,7 +72,11 @@ CREATE TABLE rcb.adjunct
     extract           INTEGER,
     ppg               NUMERIC(5,2),
     color_lov         NUMERIC(5,2),
-    price             MONEY
+    price             MONEY,
+    initial_quantity  numeric(6,2),
+    current_quantity  numeric(6,2)
+
+
 );
 
 DROP TABLE rcb.recipe CASCADE;

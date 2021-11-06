@@ -38,5 +38,11 @@ public class Hop {
     @Column(name = "alpha", columnDefinition = "DECIMAL")
     private BigDecimal alpha;
 
+    @Column(name = "initial_quantity", columnDefinition = "DECIMAL")
+    private BigDecimal initial_quantity;
+
+    @Column(name = "current_quantity", columnDefinition = "DECIMAL")
+    private BigDecimal current_quantity;
+
 
 }

@@ -45,6 +45,11 @@ public class Adjunct {
     @Column(name = "price", columnDefinition = "DECIMAL")
     private BigDecimal price;
 
+    @Column(name = "initial_quantity", columnDefinition = "DECIMAL")
+    private BigDecimal initial_quantity;
+
+    @Column(name = "current_quantity", columnDefinition = "DECIMAL")
+    private BigDecimal current_quantity;
 
 
 

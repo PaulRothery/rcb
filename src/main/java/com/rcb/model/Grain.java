@@ -56,5 +56,11 @@ public class Grain {
     @Column(name = "shipping_price", columnDefinition = "DECIMAL")
     private BigDecimal shippingPrice;
 
+    @Column(name = "initial_quantity", columnDefinition = "DECIMAL")
+    private BigDecimal initial_quantity;
+
+    @Column(name = "current_quantity", columnDefinition = "DECIMAL")
+    private BigDecimal current_quantity;
+
 
 }
