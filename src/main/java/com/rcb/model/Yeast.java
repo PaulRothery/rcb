@@ -48,10 +48,10 @@ public class Yeast {
     private BigDecimal viability;        // % of living cells
 
     @Column(name = "initial_quantity", columnDefinition = "DECIMAL")
-    private BigDecimal initial_quantity;
+    private BigDecimal initialQuantity;
 
     @Column(name = "current_quantity", columnDefinition = "DECIMAL")
-    private BigDecimal current_quantity;
+    private BigDecimal currentQuantity;
 
 
 
