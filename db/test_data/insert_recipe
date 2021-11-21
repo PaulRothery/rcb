@@ -1,5 +1,5 @@
 DELETE FROM rcb.recipe;
-INSERT INTO rcb.recipe (recipe_id, name, status, batch_no, previous_batch_no, date, type) VALUES (100, 'Tyndall Porter', 'PREPARED', 2047, 2010, CURRENT_DATE, 'Porter');
+INSERT INTO rcb.recipe (recipe_id, name, status, batch_no, sub_batch_no, previous_batch_no, date, type) VALUES (100, 'Tyndall Porter', 'PREPARED', 2047, 1, 2010, CURRENT_DATE, 'Porter');
 
 
 DELETE FROM rcb.recipegrain;

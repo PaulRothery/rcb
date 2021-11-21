@@ -86,6 +86,7 @@ CREATE TABLE rcb.recipe
     name              CHAR(50) NOT NULL,
     status            CHAR(20) NOT NULL,
     batch_no          CHAR(20) NOT NULL,
+    sub_batch_no      CHAR(20) NOT NULL,
     previous_batch_no CHAR(20) NOT NULL,
     date              DATE DEFAULT CURRENT_DATE,
     type              CHAR(20) NOT NULL,

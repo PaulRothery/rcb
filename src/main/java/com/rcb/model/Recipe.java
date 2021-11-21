@@ -26,6 +26,9 @@ public class Recipe {
     @Column(name = "batch_no", columnDefinition = "CHAR(20)")
     private String batchNo;
 
+     @Column(name = "sub_batch_no", columnDefinition = "CHAR(20)")
+    private String subBatchNo;
+
     @Column(name = "previous_batch_no", columnDefinition = "CHAR(20)")
     private String previousBatchNo;
 
