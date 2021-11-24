@@ -79,6 +79,13 @@ CREATE TABLE rcb.adjunct
 
 );
 
+DROP TABLE rcb.brewer;
+CREATE TABLE rcb.brewer
+(
+    id                serial PRIMARY KEY,
+    name              CHAR(20) NOT NULL
+);
+
 DROP TABLE rcb.recipe CASCADE;
 CREATE TABLE rcb.recipe
 (
@@ -86,7 +93,7 @@ CREATE TABLE rcb.recipe
     name              CHAR(50) NOT NULL,
     status            CHAR(20) NOT NULL,
     batch_no          CHAR(20) NOT NULL,
-    sub_batch_no      CHAR(20) NOT NULL,
+    sub_batch_no      CHAR(20),
     previous_batch_no CHAR(20) NOT NULL,
     date              DATE DEFAULT CURRENT_DATE,
     type              CHAR(20) NOT NULL,
@@ -118,7 +125,8 @@ CREATE TABLE rcb.recipehop
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
     name              CHAR(50) NOT NULL,
-    quantity          NUMERIC(5,2)
+    quantity          NUMERIC(5,2),
+    time              INT
 
 );
 
@@ -155,14 +163,6 @@ CREATE TABLE rcb.recipesalt
 
 );
 
-
-DROP TABLE rcb.brewer;
-CREATE TABLE rcb.brewer
-(
-    id                serial PRIMARY KEY,
-    recipe_id         BIGINT,
-    name              CHAR(20) NOT NULL
-);
 
 
 
@@ -230,4 +230,12 @@ CREATE TABLE rcb.brewlog
     ph                NUMERIC(5,2),
     name              CHAR(20),
     note              VARCHAR(100)
+);
+
+DROP TABLE rcb.recipebrewer;
+CREATE TABLE rcb.recipebrewer
+(
+    id                serial PRIMARY KEY,
+    recipe_id         BIGINT,
+    name              CHAR(20) NOT NULL
 );

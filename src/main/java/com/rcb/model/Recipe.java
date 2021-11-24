@@ -88,7 +88,7 @@ public class Recipe {
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")
     @OrderBy("id")
-    private Set<Brewer> brewers;
+    private Set<RecipeBrewer> recipeBrewers;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")

@@ -53,7 +53,7 @@ public class RecipeController {
     @PutMapping("{id}")
     public @ResponseBody
     Recipe updateRecipe(@PathVariable String id, @RequestBody Recipe recipe) {
-        recipe = recipeService.updateRecipe(id, recipe);
+            recipe = recipeService.updateRecipe(id, recipe);
 
         return recipe;
     }

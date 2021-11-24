@@ -25,4 +25,8 @@ public class RecipeHop {
     @Column(name = "quantity", columnDefinition = "DECIMAL")
     private BigDecimal quantity;
 
+    @Column(name = "time", columnDefinition = "INT")
+    private BigDecimal time;
+
+
 }

@@ -8,8 +8,8 @@ INSERT INTO rcb.recipegrain (recipe_id, name, quantity) VALUES (100, 'Grain Type
 INSERT INTO rcb.recipegrain (recipe_id, name, quantity) VALUES (100, 'Grain Type 3', 10);
 
 DELETE FROM rcb.recipehop;
-INSERT INTO rcb.recipehop (recipe_id, name, quantity) VALUES (100, 'Hop Type 1', 1.3);
-INSERT INTO rcb.recipehop (recipe_id, name, quantity) VALUES (100, 'Hop Type 2', 0.3);
+INSERT INTO rcb.recipehop (recipe_id, name, quantity, time) VALUES (100, 'Hop Type 1', 1.3, 10);
+INSERT INTO rcb.recipehop (recipe_id, name, quantity, time) VALUES (100, 'Hop Type 2', 0.3, 60);
 
 DELETE FROM rcb.recipeyeast;
 INSERT INTO rcb.recipeyeast (recipe_id, name, quantity) VALUES (100, 'Yeast Type 1', 4);
@@ -24,8 +24,8 @@ INSERT INTO rcb.recipeadjunct (recipe_id, name, quantity) VALUES (100, 'Adjunct 
 INSERT INTO rcb.recipeadjunct (recipe_id, name, quantity) VALUES (100, 'Adjunct Type 4', 2);
 
 
-DELETE FROM rcb.brewer;
-INSERT INTO rcb.brewer (recipe_id, name) VALUES (100, 'Matt');
+DELETE FROM rcb.recipebrewer;
+INSERT INTO rcb.recipebrewer (recipe_id, name) VALUES (100, 'Matt');
 
 DELETE FROM rcb.brewday;
 INSERT INTO rcb.brewday (recipe_id, mash_rest_time_target, rest_temp_target, max_temp_target, boil_time_target,
