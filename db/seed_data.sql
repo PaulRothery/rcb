@@ -1,3 +1,18 @@
+----------------------------------
+-- GRAIN
+----------------------------------
+DELETE FROM rcb.grain;
+INSERT INTO rcb.grain (name, date, supplier, category, sack_weight, moisture_content, fgdb, protein_content, initial_quantity, current_quantity) VALUES ('Pilsner, rahr',CURRENT_DATE,'ACME grain supply','Pisner',100,16.40,7.82,10.0,100,30);
+INSERT INTO rcb.grain (name, date, supplier, category, sack_weight, moisture_content, fgdb, protein_content, initial_quantity, current_quantity) VALUES ('Acidulated',CURRENT_DATE,'Another grain supply','Acidulated',250,20.30,19.21,14.0,250,40);
+INSERT INTO rcb.grain (name, date, supplier, category, sack_weight, moisture_content, fgdb, protein_content, initial_quantity, current_quantity) VALUES ('Maris Otter',CURRENT_DATE,'Denver grain supply','Otter',120,16.40,7.82,10.0,120,60);
+INSERT INTO rcb.grain (name, date, supplier, category, sack_weight, moisture_content, fgdb, protein_content, initial_quantity, current_quantity) VALUES ('Crystal Medium',CURRENT_DATE,'ACME grain supply','Stout',130,16.40,7.82,10.0,260,50);
+INSERT INTO rcb.grain (name, date, supplier, category, sack_weight, moisture_content, fgdb, protein_content, initial_quantity, current_quantity) VALUES ('Crystal Dark',CURRENT_DATE,'ACME grain supply','Porter',140,16.40,7.82,10.0,90,10);
+INSERT INTO rcb.grain (name, date, supplier, category, sack_weight, moisture_content, fgdb, protein_content, initial_quantity, current_quantity) VALUES ('Special Brew',CURRENT_DATE,'Bad Manners','IPA',150,16.40,7.82,10.0,130,20);
+
+
+----------------------------------
+-- HOP
+----------------------------------
 DELETE FROM rcb.hop;
 INSERT INTO rcb.hop (name, date, supplier, lot_number, crop_year, price, alpha, initial_quantity, current_quantity) VALUES ('Chinook \(20-1\)',CURRENT_DATE,'Billy Goat','BG ###',2021,16.40,7.82,10.0,7.5         );
 INSERT INTO rcb.hop (name, date, supplier, lot_number, crop_year, price, alpha, initial_quantity, current_quantity) VALUES ('Citra \(19-2\)',CURRENT_DATE,'YCH','P91-DUCIT4128',2021,13.30,15.25,10.0,7.5          );
@@ -30,3 +45,53 @@ INSERT INTO rcb.hop (name, date, supplier, lot_number, crop_year, price, alpha, 
 INSERT INTO rcb.hop (name, date, supplier, lot_number, crop_year, price, alpha, initial_quantity, current_quantity) VALUES ('Simcoe \(20\)',CURRENT_DATE,'YCH','P91-EUSIM0286',2021,12.90,14.93,10.0,7.5           );
 INSERT INTO rcb.hop (name, date, supplier, lot_number, crop_year, price, alpha, initial_quantity, current_quantity) VALUES ('Simcoe \(20-1\)',CURRENT_DATE,'','',2021,0,  0,10.0,7.5                                       );
 
+----------------------------------
+-- BREWER
+----------------------------------
+DELETE FROM rcb.brewer;
+INSERT INTO rcb.brewer (name) VALUES ('Matt');
+INSERT INTO rcb.brewer (name) VALUES ('Jordan');
+INSERT INTO rcb.brewer (name) VALUES ('K8');
+
+
+----------------------------------
+-- RECIPE & Associated tables
+----------------------------------
+DELETE FROM rcb.recipe;
+INSERT INTO rcb.recipe (recipe_id, name, status, batch_no, sub_batch_no, previous_batch_no, date, type) VALUES (100, 'Tyndall Porter', 'PREPARED', 2047, 1, 2010, CURRENT_DATE, 'Porter');
+
+
+DELETE FROM rcb.recipegrain;
+INSERT INTO rcb.recipegrain (recipe_id, name, quantity) VALUES (100, 'Grain Type 1', 120);
+INSERT INTO rcb.recipegrain (recipe_id, name, quantity) VALUES (100, 'Grain Type 2', 20);
+INSERT INTO rcb.recipegrain (recipe_id, name, quantity) VALUES (100, 'Grain Type 3', 10);
+
+DELETE FROM rcb.recipehop;
+INSERT INTO rcb.recipehop (recipe_id, name, quantity, time) VALUES (100, 'Hop Type 1', 1.3, 10);
+INSERT INTO rcb.recipehop (recipe_id, name, quantity, time) VALUES (100, 'Hop Type 2', 0.3, 60);
+
+DELETE FROM rcb.recipeyeast;
+INSERT INTO rcb.recipeyeast (recipe_id, name, quantity) VALUES (100, 'Yeast Type 1', 4);
+INSERT INTO rcb.recipeyeast (recipe_id, name, quantity) VALUES (100, 'Yeast Type 2', 3);
+INSERT INTO rcb.recipeyeast (recipe_id, name, quantity) VALUES (100, 'Yeast Type 3', 2);
+INSERT INTO rcb.recipeyeast (recipe_id, name, quantity) VALUES (100, 'Yeast Type 4', 1);
+
+DELETE FROM rcb.recipeadjunct;
+INSERT INTO rcb.recipeadjunct (recipe_id, name, quantity) VALUES (100, 'Adjunct Type 1', 2);
+INSERT INTO rcb.recipeadjunct (recipe_id, name, quantity) VALUES (100, 'Adjunct Type 2', 2);
+INSERT INTO rcb.recipeadjunct (recipe_id, name, quantity) VALUES (100, 'Adjunct Type 3', 2);
+INSERT INTO rcb.recipeadjunct (recipe_id, name, quantity) VALUES (100, 'Adjunct Type 4', 2);
+
+
+DELETE FROM rcb.recipebrewer;
+INSERT INTO rcb.recipebrewer (recipe_id, name) VALUES (100, 'Matt');
+
+DELETE FROM rcb.brewday;
+INSERT INTO rcb.brewday (recipe_id, mash_rest_time_target, rest_temp_target, max_temp_target, boil_time_target,
+                         boil_kettle_volume_target, pre_boil_gravity_target, flame_kettle_volume_target,
+                         original_gravity_target, knockout_temp_target, ferm_temp_target)
+VALUES (100, 120, 149, 170, 120, 8.46, 11.4, 8.0, 12.0, 56, 52);
+
+DELETE FROM rcb.brewlog;
+INSERT INTO rcb.brewlog (recipe_id, date_time, temp, gravity, ph, name, note)
+VALUES (100, CURRENT_TIMESTAMP, 65, 11.6, 4.3, 'MATT', 'Added essence of brussel sprout');
