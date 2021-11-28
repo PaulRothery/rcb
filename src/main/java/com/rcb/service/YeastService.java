@@ -7,8 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,13 +28,13 @@ public class YeastService {
         return yeastRepository.findAll();
     }
 
-    public Yeast findYeast(String name) {
+    public Yeast findYeast(String strain) {
 
         Optional<Yeast> yeast;
-        if (NumberUtils.isCreatable(name)) {
-            yeast = yeastRepository.findById(Long.valueOf(name));
+        if (NumberUtils.isCreatable(strain)) {
+            yeast = yeastRepository.findById(Long.valueOf(strain));
         } else {
-            yeast = yeastRepository.findYeastByName(name);
+            yeast = yeastRepository.findYeastByName(strain);
         }
 
         return yeast.get();
@@ -43,7 +42,7 @@ public class YeastService {
 
     public Yeast createYeast(Yeast yeast) {
         if (yeast.getDate() == null) {
-            yeast.setDate(Date.from(Instant.now()));
+            yeast.setDate(LocalDate.now());
         }
         yeast = yeastRepository.save(yeast);
         return yeast;
@@ -60,12 +59,12 @@ public class YeastService {
         return yeast;
     }
 
-    public void deleteYeast(String name) {
+    public void deleteYeast(String strain) {
 
-        if (NumberUtils.isCreatable(name)) {
-            yeastRepository.deleteById(Long.valueOf(name));
+        if (NumberUtils.isCreatable(strain)) {
+            yeastRepository.deleteById(Long.valueOf(strain));
         } else {
-            yeastRepository.deleteByName(name);
+            yeastRepository.deleteByName(strain);
         }
 
     }

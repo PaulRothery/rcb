@@ -4,13 +4,12 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "grain")
 public class Grain {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +20,13 @@ public class Grain {
     private String name;
 
     @Column(name = "date", columnDefinition = "DATE")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "supplier", columnDefinition = "CHAR(50)")
     private String supplier;
+
+    @Column(name = "maltster", columnDefinition = "CHAR(50)")
+    private String maltster;
 
     @Column(name = "category", columnDefinition = "CHAR(50)")
     private String category;
@@ -61,6 +63,5 @@ public class Grain {
 
     @Column(name = "current_quantity", columnDefinition = "DECIMAL")
     private BigDecimal currentQuantity;
-
 
 }

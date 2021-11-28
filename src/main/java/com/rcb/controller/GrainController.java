@@ -23,8 +23,8 @@ public class GrainController {
     @GetMapping("")
     public @ResponseBody
     List<Grain> getAllGrain() {
-        return grainService.findAll();
-
+        List<Grain> grains = grainService.findAll();
+        return grains;
 
     }
 

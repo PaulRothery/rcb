@@ -16,7 +16,7 @@ public class RecipeBrewer {
     private Long id;
 
     @Column(name = "recipe_id", columnDefinition = "BIGINT")
-    private String recipeId;
+    private Long recipeId;
 
     @Column(name = "name", columnDefinition = "CHAR(20)")
     private String name;

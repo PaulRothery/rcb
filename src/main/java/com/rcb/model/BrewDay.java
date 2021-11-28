@@ -3,6 +3,7 @@ package com.rcb.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /*
     This table has a one to one relationship with the recipe. It contains
@@ -150,6 +151,16 @@ public class BrewDay {
 
     @Column(name = "ferm_temp_target", columnDefinition = "INTEGER")
     private String fermTempTarget;
+
+    @Column(name = "yeast_vessel", columnDefinition = "CHAR(20)")
+    private BigDecimal yeastVessel;
+
+    @Column(name = "fermentor_vessel", columnDefinition = "CHAR(20)")
+    private BigDecimal fermenterVessel;
+
+    @Column(name = "pitch_volume", columnDefinition = "DECIMAL")
+    private BigDecimal pitchVolume;
+
 
 
 }

@@ -19,6 +19,9 @@ public class Brewer {
     @Column(name = "name", columnDefinition = "CHAR(20)")
     private String name;
 
+   @Column(name = "email", columnDefinition = "CHAR(30)")
+    private String email;
+
 
 
 }

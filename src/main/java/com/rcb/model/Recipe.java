@@ -4,9 +4,20 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
+/**
+ * Recipe model
+ *
+ * Contains the recipe fields and relationships to the assoviated tables
+ * There are 3 fields that are calculated and therefore not represented
+ * in the model:
+ *
+ *  original gravity
+ *  target ibus
+ *  target color
+ */
 @Data
 @Entity
 @Table(name = "recipe", uniqueConstraints = {@UniqueConstraint(columnNames = "recipe_id")})
@@ -23,17 +34,20 @@ public class Recipe {
     @Column(name = "status", columnDefinition = "CHAR(20)")
     private String status;
 
-    @Column(name = "batch_no", columnDefinition = "CHAR(20)")
-    private String batchNo;
+    @Column(name = "batch_id", columnDefinition = "CHAR(20)")
+    private String batchId;
 
-     @Column(name = "sub_batch_no", columnDefinition = "CHAR(20)")
-    private String subBatchNo;
+     @Column(name = "sub_batch_id", columnDefinition = "CHAR(20)")
+    private String subBatchId;
 
-    @Column(name = "previous_batch_no", columnDefinition = "CHAR(20)")
-    private String previousBatchNo;
+    @Column(name = "previous_batch_id", columnDefinition = "CHAR(20)")
+    private String previousBatchId;
 
     @Column(name = "date", columnDefinition = "DATE")
-    private Date date;
+    private LocalDate date;
+
+    @Column(name = "estimated_duration", columnDefinition = "INT")
+    private int estimatedDuration;
 
     @Column(name = "type", columnDefinition = "CHAR(20)")
     private String type;
@@ -41,26 +55,8 @@ public class Recipe {
     @Column(name = "batch_yield", columnDefinition = "DECIMAL")
     private BigDecimal batchYield;
 
-    @Column(name = "target_og", columnDefinition = "DECIMAL")
-    private BigDecimal targetOG;
-
     @Column(name = "target_eff", columnDefinition = "DECIMAL")
     private BigDecimal targetEff;
-
-    @Column(name = "target_ibus", columnDefinition = "DECIMAL")
-    private BigDecimal targetIbus;
-
-    @Column(name = "target_color", columnDefinition = "DECIMAL")
-    private BigDecimal targetColor;
-
-    @Column(name = "yeast_vessel", columnDefinition = "CHAR(20)")
-    private BigDecimal yeastVessel;
-
-    @Column(name = "fermentor_vessel", columnDefinition = "CHAR(20)")
-    private BigDecimal fermenterVessel;
-
-    @Column(name = "pitch_volume", columnDefinition = "DECIMAL")
-    private BigDecimal pitchVolume;
 
     @Column(name = "description", columnDefinition = "CHAR(50)")
     private BigDecimal description;
@@ -74,11 +70,6 @@ public class Recipe {
     @JoinColumn(name="recipe_id")
     @OrderBy("id")
     private Set<RecipeHop> recipeHops;
-
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="recipe_id")
-    @OrderBy("id")
-    private Set<RecipeYeast> recipeYeasts;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")

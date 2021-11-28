@@ -13,11 +13,11 @@ import java.util.Optional;
 public interface YeastRepository extends JpaRepository<Yeast, Long> {
 
 
-    @Query("SELECT yeast FROM Yeast yeast WHERE yeast.name = ?1")
-    Optional<Yeast> findYeastByName(String name);
+    @Query("SELECT yeast FROM Yeast yeast WHERE yeast.strain = ?1")
+    Optional<Yeast> findYeastByName(String strain);
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Yeast yeast WHERE yeast.name = ?1")
-    void deleteByName(String name);
+    @Query("DELETE FROM Yeast yeast WHERE yeast.strain = ?1")
+    void deleteByName(String strain);
 }

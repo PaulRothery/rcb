@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -17,11 +17,11 @@ public class Yeast {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "name", columnDefinition = "CHAR(50)")
-    private String name;
+    @Column(name = "strain", columnDefinition = "CHAR(50)")
+    private String strain;
 
     @Column(name = "date", columnDefinition = "DATE")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "supplier", columnDefinition = "CHAR(50)")
     private String supplier;
@@ -47,12 +47,8 @@ public class Yeast {
     @Column(name = "viability", columnDefinition = "DECIMAL")
     private BigDecimal viability;        // % of living cells
 
-    @Column(name = "initial_quantity", columnDefinition = "DECIMAL")
-    private BigDecimal initialQuantity;
-
-    @Column(name = "current_quantity", columnDefinition = "DECIMAL")
-    private BigDecimal currentQuantity;
-
+    @Column(name = "quantity", columnDefinition = "DECIMAL")
+    private BigDecimal quantity;
 
 
 }

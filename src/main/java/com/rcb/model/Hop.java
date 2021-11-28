@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,7 +21,7 @@ public class Hop {
     private String name;
 
     @Column(name = "date", columnDefinition = "DATE")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "supplier", columnDefinition = "CHAR(50)")
     private String supplier;

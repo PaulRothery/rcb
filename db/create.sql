@@ -1,6 +1,29 @@
 CREATE DATABASE rcb;
 CREATE SCHEMA rcb;
 
+DROP TABLE rcb.grain;
+CREATE TABLE rcb.grain
+(
+    id                serial PRIMARY KEY,
+    name              CHAR(50) NOT NULL,
+    date              DATE DEFAULT CURRENT_DATE,
+    supplier          CHAR(50) NOT NULL,
+    maltster          CHAR(50) NOT NULL,
+    category          CHAR(50),
+    sack_weight       INTEGER,
+    moisture_content  NUMERIC(5,2),
+    fgdb              NUMERIC(5,2),
+    protein_content   NUMERIC(5,2),
+    color             NUMERIC(5,2),
+    diastatic_power   NUMERIC(5,2),
+    base_price        MONEY,
+    milling_price     MONEY,
+    shipping_price    MONEY,
+    initial_quantity  numeric(6,2),
+    current_quantity  numeric(6,2)
+);
+
+
 DROP TABLE rcb.hop;
 CREATE TABLE rcb.hop
 (
@@ -14,54 +37,64 @@ CREATE TABLE rcb.hop
     alpha            NUMERIC(5,2),
     initial_quantity numeric(6,2),
     current_quantity numeric(6,2)
-
-
 );
 
 DROP TABLE rcb.yeast;
 CREATE TABLE rcb.yeast
 (
     id                   serial PRIMARY KEY,
-    name                 CHAR(50) NOT NULL,
+    strain               CHAR(20) NOT NULL,
     date                 DATE DEFAULT CURRENT_DATE,
     supplier             CHAR(50) NOT NULL,
-    lot_number           CHAR(50),
+    lot_number           CHAR(20),
     brand                CHAR(20),
-    previous_batch_id    NUMERIC(18),
-    previous_batch_brand CHAR(20),
+    previous_batch_id    CHAR(20),
+    previous_batch_brand CHAR(50),
     generation           NUMERIC(4),
+    vessel_location      CHAR(20),
     cell_count           NUMERIC(5,2),
     viability            NUMERIC(5,2),
-    initial_quantity     numeric(6,2),
-    current_quantity     numeric(6,2)
-
+    quantity             NUMERIC(6,2)
 );
 
-DROP TABLE rcb.grain;
-CREATE TABLE rcb.grain
+DROP TABLE rcb.adjunct;
+CREATE TABLE rcb.adjunct
 (
     id                serial PRIMARY KEY,
     name              CHAR(50) NOT NULL,
     date              DATE DEFAULT CURRENT_DATE,
     supplier          CHAR(50) NOT NULL,
+    type              CHAR(15),
     category          CHAR(50),
-    sack_weight       INTEGER,
-    moisture_content  NUMERIC(5,2),
-    fgdb              NUMERIC(5,2),
-    protein_content   NUMERIC(5,2),
-    color             NUMERIC(5,2),
-    diastatic_power   NUMERIC(5,2),
-    base_price        MONEY,
-    milling_price     MONEY,
-    shipping_price    MONEY,
-    initial_quantity  numeric(6,2),
-    current_quantity  numeric(6,2)
-
-
+    extract           INTEGER,
+    ppg               NUMERIC(5,2),
+    color_lov         NUMERIC(5,2),
+    price             MONEY,
+    initial_quantity  NUMERIC(6,2),
+    current_quantity  NUMERIC(6,2)
 );
+
+
 
 DROP TABLE rcb.adjunct;
 CREATE TABLE rcb.adjunct
+(
+    id                serial PRIMARY KEY,
+    name              CHAR(50) NOT NULL,
+    date              DATE DEFAULT CURRENT_DATE,
+    supplier          CHAR(50) NOT NULL,
+    type              CHAR(15),
+    category          CHAR(50),
+    extract           INTEGER,
+    ppg               NUMERIC(5,2),
+    color_lov         NUMERIC(5,2),
+    price             MONEY,
+    initial_quantity  numeric(6,2),
+    current_quantity  numeric(6,2)
+);
+
+DROP TABLE rcb.salt;       ---- in progress
+CREATE TABLE rcb.salt
 (
     id                serial PRIMARY KEY,
     name              CHAR(50) NOT NULL,
@@ -83,29 +116,24 @@ DROP TABLE rcb.brewer;
 CREATE TABLE rcb.brewer
 (
     id                serial PRIMARY KEY,
-    name              CHAR(20) NOT NULL
+    name              CHAR(20) NOT NULL,
+    email             CHAR(30)
 );
 
 DROP TABLE rcb.recipe CASCADE;
 CREATE TABLE rcb.recipe
 (
-    recipe_id         serial PRIMARY KEY,
-    name              CHAR(50) NOT NULL,
-    status            CHAR(20) NOT NULL,
-    batch_no          CHAR(20) NOT NULL,
-    sub_batch_no      CHAR(20),
-    previous_batch_no CHAR(20) NOT NULL,
-    date              DATE DEFAULT CURRENT_DATE,
-    type              CHAR(20) NOT NULL,
-    batch_yield       NUMERIC,
-    target_og         NUMERIC,
-    target_eff        NUMERIC(5,2),
-    target_ibus       NUMERIC(5,2),
-    target_color      NUMERIC(5,2),
-    yeast_vessel      CHAR(20),
-    fermentor_vessel  CHAR(20),
-    pitch_volume      NUMERIC(5,2),
-    description       CHAR(50)
+    recipe_id           serial PRIMARY KEY,
+    name                CHAR(50) NOT NULL,
+    status              CHAR(20) NOT NULL,
+    batch_id            CHAR(20) NOT NULL,
+    sub_batch_id        CHAR(20),
+    previous_batch_id   CHAR(20),
+    date                DATE DEFAULT CURRENT_DATE,
+    estimated_duration  INTEGER,
+    type                CHAR(20) NOT NULL,
+    batch_yield         NUMERIC,
+    target_eff          NUMERIC(5,2)
 );
 
 
@@ -127,19 +155,6 @@ CREATE TABLE rcb.recipehop
     name              CHAR(50) NOT NULL,
     quantity          NUMERIC(5,2),
     time              INT
-
-);
-
-DROP TABLE rcb.recipeyeast;
-CREATE TABLE rcb.recipeyeast
-(
-    id                serial PRIMARY KEY,
-    recipe_id         BIGINT,
-    name              CHAR(50) NOT NULL,
-    quantity          NUMERIC(5,2),
-    cell_count        NUMERIC(5,2),
-    viability         NUMERIC(5,2)
-
 
 );
 
@@ -213,10 +228,24 @@ CREATE TABLE rcb.brewday
     end_knockout_time           TIME,
     knockout_temp               INTEGER,
     knockout_temp_target        INTEGER,
-    pitch_time                  TIME,
     ferm_temp                   INTEGER,
-    ferm_temp_target            INTEGER
+    ferm_temp_target            INTEGER,
+    fermentor_vessel            CHAR(20),
+
+    -- yeast details
+    pitch_time                  TIME,
+    pitch_volume                NUMERIC(5,2),
+    yeast_strain                CHAR(20),
+    previous_batch_id           CHAR(20),
+    previous_batch_brand        CHAR(50),
+    yeast_vessel                CHAR(20),
+    cell_count                  NUMERIC(5,2),
+    viability                   NUMERIC(5,2)
 );
+
+
+
+
 
 
 DROP TABLE rcb.brewlog;
