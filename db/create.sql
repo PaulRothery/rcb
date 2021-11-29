@@ -1,7 +1,7 @@
 CREATE DATABASE rcb;
-CREATE SCHEMA rcb;
+CREATE SCHEMA IF NOT EXISTS rcb;
 
-DROP TABLE rcb.grain;
+DROP TABLE IF EXISTS rcb.grain;
 CREATE TABLE rcb.grain
 (
     id                serial PRIMARY KEY,
@@ -24,7 +24,7 @@ CREATE TABLE rcb.grain
 );
 
 
-DROP TABLE rcb.hop;
+DROP TABLE IF EXISTS rcb.hop;
 CREATE TABLE rcb.hop
 (
     id               serial PRIMARY KEY,
@@ -39,7 +39,7 @@ CREATE TABLE rcb.hop
     current_quantity numeric(6,2)
 );
 
-DROP TABLE rcb.yeast;
+DROP TABLE IF EXISTS rcb.yeast;
 CREATE TABLE rcb.yeast
 (
     id                   serial PRIMARY KEY,
@@ -57,7 +57,7 @@ CREATE TABLE rcb.yeast
     quantity             NUMERIC(6,2)
 );
 
-DROP TABLE rcb.adjunct;
+DROP TABLE IF EXISTS rcb.adjunct;
 CREATE TABLE rcb.adjunct
 (
     id                serial PRIMARY KEY,
@@ -76,7 +76,7 @@ CREATE TABLE rcb.adjunct
 
 
 
-DROP TABLE rcb.adjunct;
+DROP TABLE IF EXISTS rcb.adjunct;
 CREATE TABLE rcb.adjunct
 (
     id                serial PRIMARY KEY,
@@ -93,7 +93,7 @@ CREATE TABLE rcb.adjunct
     current_quantity  numeric(6,2)
 );
 
-DROP TABLE rcb.salt;       ---- in progress
+DROP TABLE IF EXISTS rcb.salt;       ---- in progress
 CREATE TABLE rcb.salt
 (
     id                serial PRIMARY KEY,
@@ -112,7 +112,7 @@ CREATE TABLE rcb.salt
 
 );
 
-DROP TABLE rcb.brewer;
+DROP TABLE IF EXISTS rcb.brewer;
 CREATE TABLE rcb.brewer
 (
     id                serial PRIMARY KEY,
@@ -120,7 +120,7 @@ CREATE TABLE rcb.brewer
     email             CHAR(30)
 );
 
-DROP TABLE rcb.recipe CASCADE;
+DROP TABLE IF EXISTS rcb.recipe CASCADE;
 CREATE TABLE rcb.recipe
 (
     recipe_id           serial PRIMARY KEY,
@@ -137,7 +137,7 @@ CREATE TABLE rcb.recipe
 );
 
 
-DROP TABLE rcb.recipegrain;
+DROP TABLE IF EXISTS rcb.recipegrain;
 CREATE TABLE rcb.recipegrain
 (
     id                serial PRIMARY KEY,
@@ -147,7 +147,7 @@ CREATE TABLE rcb.recipegrain
 
 );
 
-DROP TABLE rcb.recipehop;
+DROP TABLE IF EXISTS rcb.recipehop;
 CREATE TABLE rcb.recipehop
 (
     id                serial PRIMARY KEY,
@@ -158,7 +158,7 @@ CREATE TABLE rcb.recipehop
 
 );
 
-DROP TABLE rcb.recipeadjunct;
+DROP TABLE IF EXISTS rcb.recipeadjunct;
 CREATE TABLE rcb.recipeadjunct
 (
     id                serial PRIMARY KEY,
@@ -168,7 +168,7 @@ CREATE TABLE rcb.recipeadjunct
 
 );
 
-DROP TABLE rcb.recipesalt;
+DROP TABLE IF EXISTS rcb.recipesalt;
 CREATE TABLE rcb.recipesalt
 (
     id                serial PRIMARY KEY,
@@ -183,7 +183,7 @@ CREATE TABLE rcb.recipesalt
 
 
 
-DROP TABLE rcb.brewday;
+DROP TABLE IF EXISTS rcb.brewday;
 CREATE TABLE rcb.brewday
 (
     id                          serial PRIMARY KEY,
@@ -248,7 +248,7 @@ CREATE TABLE rcb.brewday
 
 
 
-DROP TABLE rcb.brewlog;
+DROP TABLE IF EXISTS rcb.brewlog;
 CREATE TABLE rcb.brewlog
 (
     id                serial PRIMARY KEY,
@@ -261,7 +261,7 @@ CREATE TABLE rcb.brewlog
     note              VARCHAR(100)
 );
 
-DROP TABLE rcb.recipebrewer;
+DROP TABLE IF EXISTS rcb.recipebrewer;
 CREATE TABLE rcb.recipebrewer
 (
     id                serial PRIMARY KEY,
