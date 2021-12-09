@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Data
 @Entity
@@ -20,8 +20,8 @@ public class BrewLog {
     @Column(name = "recipe_id", columnDefinition = "BIGINT")
     private Long recipeId;
 
-    @Column(name = "date_time", columnDefinition = "TIMESTAMP")
-    private Timestamp dateTime;
+    @Column(name = "date_time", columnDefinition = "DATE")
+    private Date dateTime;
 
     @Column(name = "temp", columnDefinition = "DECIMAL")
     private BigDecimal temp;
@@ -32,8 +32,8 @@ public class BrewLog {
     @Column(name = "ph", columnDefinition = "DECIMAL")
     private BigDecimal ph;
 
-    @Column(name = "name", columnDefinition = "CHAR(20)")
-    private String name;
+    @Column(name = "brewer", columnDefinition = "CHAR(20)")
+    private String brewer;
 
     @Column(name = "note", columnDefinition = "CHAR(100)")
     private String note;

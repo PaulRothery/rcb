@@ -1,9 +1,12 @@
 package com.rcb.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.rcb.utils.TimeHandler;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.sql.Time;
+import java.time.LocalTime;
 
 /*
     This table has a one to one relationship with the recipe. It contains
@@ -24,142 +27,162 @@ public class BrewDay {
     private Long recipeId;
 
     @Column(name = "mash_in_time", columnDefinition = "TIME")
-    private String mashInTime;
+    @JsonDeserialize(using = TimeHandler.class)
+    private LocalTime mashInTime;
 
-    @Column(name = "strike_temp_upper", columnDefinition = "INTEGER")
-    private String strikeTempUpper;
+    @Column(name = "strike_temp_upper", columnDefinition = "DECIMAL")
+    private Double strikeTempUpper;
 
-    @Column(name = "strike_temp_lower", columnDefinition = "INTEGER")
-    private String strikeTempLower;
+    @Column(name = "strike_temp_lower", columnDefinition = "DECIMAL")
+    private Double strikeTempLower;
 
     @Column(name = "strike_ph", columnDefinition = "DECIMAL")
-    private String strikePh;
+    private Double strikePh;
 
     @Column(name = "mash_rest_time", columnDefinition = "TIME")
-    private String mashRestTime;
+    private Time mashRestTime;
 
     @Column(name = "mash_rest_time_target", columnDefinition = "INTEGER")
-    private String mashRestTimeTarget;
+    private Integer mashRestTimeTarget;
 
-    @Column(name = "rest_temp", columnDefinition = "INTEGER")
-    private String restTemp;
+    @Column(name = "rest_temp", columnDefinition = "DECIMAL")
+    private Double restTemp;
 
-    @Column(name = "rest_temp_target", columnDefinition = "INTEGER")
-    private String restTempTarget;
+    @Column(name = "rest_temp_target", columnDefinition = "DECIMAL")
+    private Double restTempTarget;
 
     @Column(name = "rest_ph", columnDefinition = "DECIMAL")
-    private String restPh;
+    private Double restPh;
 
     @Column(name = "vorlauf_time", columnDefinition = "TIME")
-    private String vorlaufTime;
+    private Time vorlaufTime;
 
     @Column(name = "lauter_start_time", columnDefinition = "TIME")
-    private String lauterStartTime;
+    private Time lauterStartTime;
 
-    @Column(name = "mash_temp", columnDefinition = "INTEGER")
-    private String mashTemp;
+    @Column(name = "mash_temp", columnDefinition = "DECIMAL")
+    private Double mashTemp;
 
     @Column(name = "first_gravity", columnDefinition = "DECIMAL")
-    private String firstGravity;
+    private Double firstGravity;
 
     @Column(name = "first_ph", columnDefinition = "DECIMAL")
-    private String firstPh;
+    private Double firstPh;
 
     @Column(name = "lauter_end_time", columnDefinition = "TIME")
-    private String lauterEndTime;
+    private LocalTime lauterEndTime;
 
-    @Column(name = "max_temp", columnDefinition = "INTEGER")
-    private String maxTemp;
+    @Column(name = "max_temp", columnDefinition = "DECIMAL")
+    private Double maxTemp;
 
-    @Column(name = "max_temp_target", columnDefinition = "INTEGER")
-    private String maxTempTarget;
+    @Column(name = "max_temp_target", columnDefinition = "DECIMAL")
+    private Double maxTempTarget;
 
     @Column(name = "last_gravity", columnDefinition = "DECIMAL")
-    private String lastGravity;
+    private Double lastGravity;
 
     @Column(name = "last_ph", columnDefinition = "DECIMAL")
-    private String lastPh;
+    private Double lastPh;
 
-    @Column(name = "kettle_temp", columnDefinition = "INTEGER")
-    private String kettleTemp;
+    @Column(name = "kettle_temp", columnDefinition = "DECIMAL")
+    private Double kettleTemp;
 
     @Column(name = "boil_time", columnDefinition = "TIME")
-    private String boilTime;
+    private Time boilTime;
 
     @Column(name = "boil_time_target", columnDefinition = "INTEGER")
-    private String boilTimeTarget;
+    private Integer boilTimeTarget;
 
     @Column(name = "boil_kettle_volume", columnDefinition = "DECIMAL")
-    private String boilKettleVolume;
+    private Double boilKettleVolume;
 
     @Column(name = "boil_kettle_volume_target", columnDefinition = "DECIMAL")
-    private String boilKettleVolumeTarget;
+    private Double boilKettleVolumeTarget;
 
     @Column(name = "pre_boil_gravity", columnDefinition = "DECIMAL")
-    private String preBoilGravity;
+    private Double preBoilGravity;
 
     @Column(name = "pre_boil_gravity_target", columnDefinition = "DECIMAL")
-    private String preBoilGravityTarget;
+    private Double preBoilGravityTarget;
 
     @Column(name = "pre_boil_ph", columnDefinition = "DECIMAL")
-    private String preBoilPh;
+    private Double preBoilPh;
 
     @Column(name = "koppa_clear", columnDefinition = "DECIMAL")
-    private String koppaClear;
+    private Double koppaClear;
 
     @Column(name = "zinc_grams", columnDefinition = "DECIMAL")
-    private String zincGrams;
+    private Double zincGrams;
 
     @Column(name = "flame_out_time", columnDefinition = "TIME")
-    private String flamOutTime;
+    private Time flameOutTime;
 
     @Column(name = "flame_kettle_volume", columnDefinition = "DECIMAL")
-    private String flameKettleVolume;
+    private Double flameKettleVolume;
 
     @Column(name = "flame_kettle_volume_target", columnDefinition = "DECIMAL")
-    private String flameKettleVolumeTarget;
+    private Double flameKettleVolumeTarget;
 
     @Column(name = "original_gravity", columnDefinition = "DECIMAL")
-    private String originalGravity;
+    private Double originalGravity;
 
     @Column(name = "original_gravity_target", columnDefinition = "DECIMAL")
-    private String originalGravityTarget;
+    private Double originalGravityTarget;
 
     @Column(name = "post_boil_ph", columnDefinition = "DECIMAL")
-    private String postBoilPh;
+    private Double postBoilPh;
 
-    @Column(name = "whirlpool_time", columnDefinition = "TIME")
-    private String whirlpoolTime;
+    @Column(name = "whirlpool_staet_time", columnDefinition = "TIME")
+    private Time whirlpoolStartTime;
 
-    @Column(name = "knockout_time", columnDefinition = "TIME")
-    private String knockoutTime;
+    @Column(name = "whirlpool_end_time", columnDefinition = "TIME")
+    private Time whirlpoolEndTime;
 
-    @Column(name = "end_knockout_time", columnDefinition = "TIME")
-    private String endKnockoutTime;
+    @Column(name = "knockout_start_time", columnDefinition = "TIME")
+    private Time knockoutStartTime;
 
-    @Column(name = "knockout_temp", columnDefinition = "INTEGER")
-    private String knockoutTemp;
+    @Column(name = "knockout_end_time", columnDefinition = "TIME")
+    private LocalTime knockoutEndTime;
 
-    @Column(name = "knockout_temp_target", columnDefinition = "INTEGER")
-    private String knockoutTempTarget;
+    @Column(name = "knockout_temp", columnDefinition = "DECIMAL")
+    private Double knockoutTemp;
 
-    @Column(name = "pitch_time", columnDefinition = "TIME")
-    private String pitchTime;
+    @Column(name = "knockout_temp_target", columnDefinition = "DECIMAL")
+    private Double knockoutTempTarget;
 
-    @Column(name = "ferm_temp", columnDefinition = "INTEGER")
-    private String fermTemp;
 
-    @Column(name = "ferm_temp_target", columnDefinition = "INTEGER")
-    private String fermTempTarget;
+    @Column(name = "ferm_temp", columnDefinition = "DECIMAL")
+    private Double fermTemp;
 
-    @Column(name = "yeast_vessel", columnDefinition = "CHAR(20)")
-    private BigDecimal yeastVessel;
+    @Column(name = "ferm_temp_target", columnDefinition = "DECIMAL")
+    private Double fermTempTarget;
 
     @Column(name = "fermentor_vessel", columnDefinition = "CHAR(20)")
-    private BigDecimal fermenterVessel;
+    private String fermenterVessel;
+
+    @Column(name = "pitch_time", columnDefinition = "TIME")
+    private LocalTime pitchTime;
 
     @Column(name = "pitch_volume", columnDefinition = "DECIMAL")
-    private BigDecimal pitchVolume;
+    private Double pitchVolume;
+
+    @Column(name = "yeast_strain", columnDefinition = "CHAR(20)")
+    private String yeastStrain;
+
+    @Column(name = "previous_batch_id", columnDefinition = "CHAR(20)")
+    private String previousBatchId;
+
+    @Column(name = "previous_batch_brand", columnDefinition = "CHAR(50)")
+    private String previousBatchBramd;
+
+    @Column(name = "yeast_vessel", columnDefinition = "CHAR(20)")
+    private String yeastVessel;
+
+    @Column(name = "cell_count", columnDefinition = "DECIMAL")
+    private Double cellCount;
+
+    @Column(name = "viability", columnDefinition = "DECIMAL")
+    private Double viability;
 
 
 

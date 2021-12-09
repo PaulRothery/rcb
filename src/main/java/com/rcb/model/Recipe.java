@@ -1,10 +1,12 @@
 package com.rcb.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.rcb.utils.DateHandler;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -37,14 +39,15 @@ public class Recipe {
     @Column(name = "batch_id", columnDefinition = "CHAR(20)")
     private String batchId;
 
-     @Column(name = "sub_batch_id", columnDefinition = "CHAR(20)")
-    private String subBatchId;
+    @Column(name = "sub_batch_id", columnDefinition = "INT")
+    private int subBatchId;
 
     @Column(name = "previous_batch_id", columnDefinition = "CHAR(20)")
     private String previousBatchId;
 
     @Column(name = "date", columnDefinition = "DATE")
-    private LocalDate date;
+    @JsonDeserialize(using = DateHandler.class)
+    private Date date;
 
     @Column(name = "estimated_duration", columnDefinition = "INT")
     private int estimatedDuration;
@@ -57,9 +60,6 @@ public class Recipe {
 
     @Column(name = "target_eff", columnDefinition = "DECIMAL")
     private BigDecimal targetEff;
-
-    @Column(name = "description", columnDefinition = "CHAR(50)")
-    private BigDecimal description;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")
@@ -83,7 +83,7 @@ public class Recipe {
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")
-    private Set<BrewDay> brewDay;
+    private Set<BrewDay> brewDays;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")
