@@ -20,8 +20,11 @@ public class BrewLog {
     @Column(name = "recipe_id", columnDefinition = "BIGINT")
     private Long recipeId;
 
-    @Column(name = "date_time", columnDefinition = "DATE")
-    private Date dateTime;
+    @Column(name = "date", columnDefinition = "DATE")
+    private Date date;
+
+    @Column(name = "time", columnDefinition = "DATE")
+    private String time;
 
     @Column(name = "temp", columnDefinition = "DECIMAL")
     private BigDecimal temp;

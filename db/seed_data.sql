@@ -96,5 +96,5 @@ INSERT INTO rcb.brewday (recipe_id, mash_rest_time_target, rest_temp_target, max
 VALUES (100, 120, 149, 170, 120, 8.46, 11.4, 8.0, 12.0, 56, 52);
 
 DELETE FROM rcb.brewlog;
-INSERT INTO rcb.brewlog (recipe_id, date_time, temp, gravity, ph, brewer, note)
-VALUES (100, CURRENT_TIMESTAMP, 65, 11.6, 4.3, 'MATT', 'Added essence of brussel sprout');
+INSERT INTO rcb.brewlog (recipe_id, date, time, temp, gravity, ph, brewer, note)
+VALUES (100, CURRENT_TIMESTAMP, '12:12', 65, 11.6, 4.3, 'MATT', 'Added essence of brussel sprout');

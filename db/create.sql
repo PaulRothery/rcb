@@ -254,7 +254,8 @@ CREATE TABLE rcb.brewlog
 (
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
-    date_time         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time              CHAR(5),
     temp              NUMERIC(5,2),
     gravity           NUMERIC(5,2),
     ph                NUMERIC(5,2),
