@@ -90,4 +90,9 @@ public class Recipe {
     @OrderBy("id")
     private Set<BrewLog> brewLogs;
 
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="recipe_id")
+    @OrderBy("id")
+    private Set<RecipeSalt> recipeSalts;
+
 }

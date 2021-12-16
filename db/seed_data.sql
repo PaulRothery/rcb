@@ -97,4 +97,12 @@ VALUES (100, 120, 149, 170, 120, 8.46, 11.4, 8.0, 12.0, 56, 52);
 
 DELETE FROM rcb.brewlog;
 INSERT INTO rcb.brewlog (recipe_id, date, time, temp, gravity, ph, brewer, note)
-VALUES (100, CURRENT_TIMESTAMP, '12:12', 65, 11.6, 4.3, 'MATT', 'Added essence of brussel sprout');
+VALUES (100, CURRENT_TIMESTAMP, '12:12', 65, 11.6, 4.3, 'Matt', 'Added essence of brussel sprout');
+
+DELETE FROM rcb.recipesalt;
+INSERT INTO rcb.recipesalt (recipe_id, name,  mash_quantity, lauter_quantity,kettle_quantity)
+VALUES (100, 'CaC03', 0, 0.8, 0);
+INSERT INTO rcb.recipesalt (recipe_id, name,  mash_quantity, lauter_quantity,kettle_quantity)
+VALUES (100, 'CaS04', 0, 0, 0.6);
+INSERT INTO rcb.recipesalt (recipe_id, name,  mash_quantity, lauter_quantity,kettle_quantity)
+VALUES (100, 'NaCl', 0, 0, 2.4);

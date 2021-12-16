@@ -174,7 +174,9 @@ CREATE TABLE rcb.recipesalt
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
     name              CHAR(20) NOT NULL,
-    quantity          NUMERIC(5,2)
+    mash_quantity     NUMERIC(5,2),
+    lauter_quantity   NUMERIC(5,2),
+    kettle_quantity   NUMERIC(5,2)
 
 );
 
