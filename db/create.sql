@@ -154,6 +154,7 @@ CREATE TABLE rcb.recipehop
 (
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
+    date              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     name              CHAR(50) NOT NULL,
     quantity          NUMERIC(5,2),
     time              INT
@@ -165,6 +166,7 @@ CREATE TABLE rcb.recipeadjunct
 (
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
+    date              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     name              CHAR(50) NOT NULL,
     quantity          NUMERIC(5,2)
 
@@ -175,17 +177,13 @@ CREATE TABLE rcb.recipesalt
 (
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
+    date              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     name              CHAR(20) NOT NULL,
     mash_quantity     NUMERIC(5,2),
     lauter_quantity   NUMERIC(5,2),
     kettle_quantity   NUMERIC(5,2)
 
 );
-
-
-
-
-
 
 DROP TABLE IF EXISTS rcb.brewday;
 CREATE TABLE rcb.brewday
