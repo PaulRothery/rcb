@@ -1,6 +1,6 @@
-package com.rcb.controller;
+package com.rcb.controller.enums;
 
-import com.rcb.service.SaltService;
+import com.rcb.service.enums.SaltService;
 import com.rcb.validvalues.Salt;
 import org.springframework.web.bind.annotation.*;
 

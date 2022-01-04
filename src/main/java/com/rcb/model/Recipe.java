@@ -74,6 +74,11 @@ public class Recipe {
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")
     @OrderBy("id")
+    private Set<RecipeSalt> recipeSalts;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="recipe_id")
+    @OrderBy("id")
     private Set<RecipeAdjunct> recipeAdjuncts;
 
     @OneToMany(cascade=CascadeType.ALL)
@@ -90,9 +95,5 @@ public class Recipe {
     @OrderBy("id")
     private Set<BrewLog> brewLogs;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="recipe_id")
-    @OrderBy("id")
-    private Set<RecipeSalt> recipeSalts;
 
 }

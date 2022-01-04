@@ -25,4 +25,8 @@ public class RecipeGrain {
     @Column(name = "quantity", columnDefinition = "DECIMAL")
     private BigDecimal quantity;
 
+    @Column(name = "color", columnDefinition = "DECIMAL")
+    private BigDecimal color;
+
+
 }

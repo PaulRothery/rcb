@@ -38,7 +38,7 @@ public class Grain {
     private BigDecimal moistureContent;
 
     @Column(name = "fgdb", columnDefinition = "DECIMAL")
-    private BigDecimal fgdb;
+    private BigDecimal fgdb; //extract potential
 
     @Column(name = "protein_content", columnDefinition = "DECIMAL")
     private BigDecimal proteinContent;

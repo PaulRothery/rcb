@@ -1,12 +1,8 @@
 package com.rcb.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.rcb.utils.TimeHandler;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.LocalTime;
 
 /*
     This table has a one to one relationship with the recipe. It contains
@@ -27,8 +23,8 @@ public class BrewDay {
     private Long recipeId;
 
     @Column(name = "mash_in_time", columnDefinition = "TIME")
-    @JsonDeserialize(using = TimeHandler.class)
-    private LocalTime mashInTime;
+    //@JsonDeserialize(using = TimeHandler.class)
+    private String mashInTime;
 
     @Column(name = "strike_temp_upper", columnDefinition = "DECIMAL")
     private Double strikeTempUpper;
@@ -40,7 +36,7 @@ public class BrewDay {
     private Double strikePh;
 
     @Column(name = "mash_rest_time", columnDefinition = "TIME")
-    private Time mashRestTime;
+    private String mashRestTime;
 
     @Column(name = "mash_rest_time_target", columnDefinition = "INTEGER")
     private Integer mashRestTimeTarget;
@@ -55,10 +51,10 @@ public class BrewDay {
     private Double restPh;
 
     @Column(name = "vorlauf_time", columnDefinition = "TIME")
-    private Time vorlaufTime;
+    private String vorlaufTime;
 
     @Column(name = "lauter_start_time", columnDefinition = "TIME")
-    private Time lauterStartTime;
+    private String lauterStartTime;
 
     @Column(name = "mash_temp", columnDefinition = "DECIMAL")
     private Double mashTemp;
@@ -70,7 +66,7 @@ public class BrewDay {
     private Double firstPh;
 
     @Column(name = "lauter_end_time", columnDefinition = "TIME")
-    private LocalTime lauterEndTime;
+    private String lauterEndTime;
 
     @Column(name = "max_temp", columnDefinition = "DECIMAL")
     private Double maxTemp;
@@ -88,7 +84,7 @@ public class BrewDay {
     private Double kettleTemp;
 
     @Column(name = "boil_time", columnDefinition = "TIME")
-    private Time boilTime;
+    private String boilTime;
 
     @Column(name = "boil_time_target", columnDefinition = "INTEGER")
     private Integer boilTimeTarget;
@@ -115,7 +111,7 @@ public class BrewDay {
     private Double zincGrams;
 
     @Column(name = "flame_out_time", columnDefinition = "TIME")
-    private Time flameOutTime;
+    private String flameOutTime;
 
     @Column(name = "flame_kettle_volume", columnDefinition = "DECIMAL")
     private Double flameKettleVolume;
@@ -133,16 +129,16 @@ public class BrewDay {
     private Double postBoilPh;
 
     @Column(name = "whirlpool_staet_time", columnDefinition = "TIME")
-    private Time whirlpoolStartTime;
+    private String whirlpoolStartTime;
 
     @Column(name = "whirlpool_end_time", columnDefinition = "TIME")
-    private Time whirlpoolEndTime;
+    private String whirlpoolEndTime;
 
     @Column(name = "knockout_start_time", columnDefinition = "TIME")
-    private Time knockoutStartTime;
+    private String knockoutStartTime;
 
     @Column(name = "knockout_end_time", columnDefinition = "TIME")
-    private LocalTime knockoutEndTime;
+    private String knockoutEndTime;
 
     @Column(name = "knockout_temp", columnDefinition = "DECIMAL")
     private Double knockoutTemp;
@@ -161,7 +157,7 @@ public class BrewDay {
     private String fermenterVessel;
 
     @Column(name = "pitch_time", columnDefinition = "TIME")
-    private LocalTime pitchTime;
+    private String pitchTime;
 
     @Column(name = "pitch_volume", columnDefinition = "DECIMAL")
     private Double pitchVolume;

@@ -1,4 +1,4 @@
-package com.rcb.service;
+package com.rcb.service.enums;
 
 import com.rcb.validvalues.Salt;
 import lombok.Data;
