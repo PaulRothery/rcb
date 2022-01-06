@@ -38,6 +38,9 @@ public class FermentationLog {
     @Column(name = "ph", columnDefinition = "DECIMAL")
     private BigDecimal ph;
 
+    @Column(name = "current_abv", columnDefinition = "DECIMAL")
+    private BigDecimal currentABV;
+
     @Column(name = "brewer", columnDefinition = "CHAR(20)")
     private String brewer;
 

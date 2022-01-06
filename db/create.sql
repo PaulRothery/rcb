@@ -97,7 +97,8 @@ DROP TABLE IF EXISTS rcb.salt;       ---- in progress
 CREATE TABLE rcb.salt
 (
     id                serial PRIMARY KEY,
-    name              CHAR(50) NOT NULL,
+    common_name       CHAR(50) NOT NULL,
+    chemical_name     CHAR(20) NOT NULL,
     date              DATE DEFAULT CURRENT_DATE,
     supplier          CHAR(50) NOT NULL,
     type              CHAR(15),
@@ -261,6 +262,7 @@ CREATE TABLE rcb.fermentationlog
     temp              NUMERIC(5,2),
     gravity           NUMERIC(5,2),
     ph                NUMERIC(5,2),
+    current_abv       NUMERIC(5,2),
     brewer            CHAR(20),
     note              VARCHAR(100)
 );
