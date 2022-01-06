@@ -64,7 +64,7 @@ public class RecipeService {
      * by default one entry as a result of an empty one being presented
      * in the ui. this can be identified when the name is empty. so before
      * updating the recipe ensure that it is removed i.e. really empty
-     * @param recipe
+     * @param recipe the recipe record
      */
     private void removeEmptyAssociations(Recipe recipe) {
 
@@ -114,12 +114,12 @@ public class RecipeService {
         }
 
 
-        // brewlogs
-        if (recipe.getBrewLogs().size() == 1) {
+        // fermentationlogs
+        if (recipe.getFermentationLogs().size() == 1) {
 
-            List<BrewLog> recipeBrewLogs = new ArrayList<>(recipe.getBrewLogs());
-            if (StringUtils.isEmpty(recipeBrewLogs.get(0).getBrewer())) {
-                recipe.getBrewLogs().clear();
+            List<FermentationLog> recipeFermentationLogs = new ArrayList<>(recipe.getFermentationLogs());
+            if (StringUtils.isEmpty(recipeFermentationLogs.get(0).getBrewer())) {
+                recipe.getFermentationLogs().clear();
             }
         }
 

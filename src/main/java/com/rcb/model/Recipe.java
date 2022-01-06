@@ -93,7 +93,7 @@ public class Recipe {
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="recipe_id")
     @OrderBy("id")
-    private Set<BrewLog> brewLogs;
+    private Set<FermentationLog> fermentationLogs;
 
 
 }

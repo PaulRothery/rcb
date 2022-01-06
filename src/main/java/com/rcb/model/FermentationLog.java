@@ -10,8 +10,8 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "brewlog")
-public class BrewLog {
+@Table(name = "fermentationlog")
+public class FermentationLog {
 
 
     @Id

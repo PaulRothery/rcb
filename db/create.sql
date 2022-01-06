@@ -251,8 +251,8 @@ CREATE TABLE rcb.brewday
 
 
 
-DROP TABLE IF EXISTS rcb.brewlog;
-CREATE TABLE rcb.brewlog
+DROP TABLE IF EXISTS rcb.fermentationlog;
+CREATE TABLE rcb.fermentationlog
 (
     id                serial PRIMARY KEY,
     recipe_id         BIGINT,
