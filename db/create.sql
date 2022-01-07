@@ -240,6 +240,7 @@ CREATE TABLE rcb.brewday
     pitch_time                  CHAR(5),
     pitch_volume                NUMERIC(5,2),
     yeast_strain                CHAR(20),
+    generation                  NUMERIC(4),
     previous_batch_id           CHAR(20),
     previous_batch_brand        CHAR(50),
     yeast_vessel                CHAR(20),
