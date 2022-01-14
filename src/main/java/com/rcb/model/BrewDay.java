@@ -128,7 +128,7 @@ public class BrewDay {
     @Column(name = "post_boil_ph", columnDefinition = "DECIMAL")
     private Double postBoilPh;
 
-    @Column(name = "whirlpool_staet_time", columnDefinition = "TIME")
+    @Column(name = "whirlpool_start_time", columnDefinition = "TIME")
     private String whirlpoolStartTime;
 
     @Column(name = "whirlpool_end_time", columnDefinition = "TIME")
