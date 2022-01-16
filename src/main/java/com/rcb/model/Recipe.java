@@ -1,7 +1,5 @@
 package com.rcb.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.rcb.utils.DateHandler;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -46,7 +44,8 @@ public class Recipe {
     private String previousBatchId;
 
     @Column(name = "date", columnDefinition = "DATE")
-    @JsonDeserialize(using = DateHandler.class)
+  //  @JsonDeserialize(using = DateHandler.class)
+ //   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     private Date date;
 
     @Column(name = "estimated_duration", columnDefinition = "INT")

@@ -1,7 +1,5 @@
 package com.rcb.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.rcb.utils.DateHandler;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,8 +21,8 @@ public class FermentationLog {
     private Long recipeId;
 
     @Column(name = "date", columnDefinition = "DATE")
-    @JsonDeserialize(using = DateHandler.class)
-    private Date date;
+    //@JsonDeserialize(using = DateHandler.class)
+    protected Date date;
 
     @Column(name = "time", columnDefinition = "DATE")
     private String time;
